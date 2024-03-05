@@ -7,21 +7,24 @@ readme = "README.md"
 repository = "https://github.com/wasmerio/wordpress-wasmer-starter"
 entrypoint = "run"
 
-[fs]
-app = "app"
+[[module]]
+name = "php"
+source = "php.wasm"
+abi = "wasi"
 
-[dependencies]
-"php/php" = "7.4.33+build.4"
+[fs]
+"/app" = "app"
+"/db" = "db"
 
 [[command]]
 name = "run"
-module = "php/php:php"
+module = "php"
 runner = "wasi"
 
 [command.annotations.wasi]
 main-args = [
     "-t",
-    "app",
+    "/app",
     "-S",
     "localhost:8080"
 ]
