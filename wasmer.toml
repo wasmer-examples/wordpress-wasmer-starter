@@ -1,0 +1,23 @@
+[package]
+name = "wasmer-examples/wordpress-wasmer-starter"
+version = "0.2.2"
+description = "Wordpress starter package"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/wasmerio/wordpress-wasmer-starter"
+entrypoint = "run"
+
+[dependencies]
+"php/php" = "=8.0.10"
+
+[fs]
+"/app" = "app"
+"/db" = "db"
+
+[[command]]
+name = "run"
+module = "php/php:php"
+runner = "wasi"
+[command.annotations.wasi]
+env = ["USE_ZEND_ALLOC=0"]
+main-args = ["-t", "/app", "-S", "localhost:8080"]
