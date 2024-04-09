@@ -1,0 +1,6 @@
+---
+kind: wasmer.io/App.v0
+name: wordpress-wasmer-starter
+package: wasmer-examples/wordpress-wasmer-starter
+scaling:
+  mode: single_concurrency
