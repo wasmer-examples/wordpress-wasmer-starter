@@ -18,6 +18,17 @@
  * @package WordPress
  */
 
+$http_uri = "http://" . $_SERVER["HTTP_HOST"];
+if (str_starts_with($_SERVER["REQUEST_URI"], $http_uri)) {
+	$_SERVER["REQUEST_URI"] = substr($_SERVER["REQUEST_URI"], strlen($http_uri));
+}
+else {
+	$https_uri = "https://" . $_SERVER["HTTP_HOST"];
+	if (str_starts_with($_SERVER["REQUEST_URI"], $https_uri)) {
+		$_SERVER["REQUEST_URI"] = substr($_SERVER["REQUEST_URI"], strlen($https_uri));
+	}
+}
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'database_name_here' );
