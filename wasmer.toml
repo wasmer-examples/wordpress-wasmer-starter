@@ -8,7 +8,7 @@ repository = "https://github.com/wasmer-examples/wordpress-wasmer-starter"
 entrypoint = "run"
 
 [dependencies]
-"arshia001/php" = "=8.3.4-pre.2"
+"arshia001/php" = "=8.3.4-pre.4"
 
 [fs]
 "/app" = "app"
@@ -18,6 +18,6 @@ entrypoint = "run"
 name = "run"
 module = "arshia001/php:php"
 runner = "wasi"
+
 [command.annotations.wasi]
-env = ["USE_ZEND_ALLOC=0"]
-main-args = ["-t", "/app", "-S", "localhost:8080", "-d", "opcache.enable=1", "-d", "opcache.enable_cli=1"]
+main-args = ["-t", "/app", "-S", "localhost:8080"]
