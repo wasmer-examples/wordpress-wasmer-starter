@@ -14,7 +14,7 @@ $ curl https://get.wasmer.io -sSfL | sh
 You can use `wasmer run-unstable` to run the website locally.
 
 ```console
-$ wasmer run-unstable .
+$ wasmer run . --net
 INFO run: wasmer_wasix::runners::wcgi::runner: Starting the server address=127.0.0.1:8000 command_name="php"
 ```
 
