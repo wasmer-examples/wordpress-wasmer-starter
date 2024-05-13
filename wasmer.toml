@@ -8,7 +8,7 @@ repository = "https://github.com/wasmer-examples/wordpress-wasmer-starter"
 entrypoint = "run"
 
 [dependencies]
-"arshia001/php" = "=8.3.4-pre.4"
+"php/php" = "=8.3.4-beta.1"
 
 [fs]
 "/app" = "app"
@@ -16,7 +16,7 @@ entrypoint = "run"
 
 [[command]]
 name = "run"
-module = "arshia001/php:php"
+module = "php/php:php"
 runner = "wasi"
 
 [command.annotations.wasi]
