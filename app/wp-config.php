@@ -70,8 +70,12 @@ define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
 define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
 
-define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
-define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
+$localhost = array("localhost", "127.0.0.1", "0.0.0.0");
+$is_http = in_array(explode(':', $_SERVER['HTTP_HOST'])[0], $localhost);
+$scheme = $is_http ? "http://" : "https://";
+
+define( 'WP_HOME',  $scheme . $_SERVER['HTTP_HOST'] );
+define( 'WP_SITEURL', $scheme . $_SERVER['HTTP_HOST'] . '/' );
 
 /**#@-*/
 
