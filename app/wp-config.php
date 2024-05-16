@@ -24,12 +24,18 @@ define('WP_CACHE', true); // Added by W3 Total Cache
 
 $http_uri = "http://" . $_SERVER["HTTP_HOST"];
 if (str_starts_with($_SERVER["REQUEST_URI"], $http_uri)) {
+	if (str_contains($_SERVER["REQUEST_URI"], '.wasmer.app')) {
+		$_SERVER['HTTPS'] = true;
+		$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
+	}
 	$_SERVER["REQUEST_URI"] = substr($_SERVER["REQUEST_URI"], strlen($http_uri));
 }
 else {
 	$https_uri = "https://" . $_SERVER["HTTP_HOST"];
 	if (str_starts_with($_SERVER["REQUEST_URI"], $https_uri)) {
 		$_SERVER["REQUEST_URI"] = substr($_SERVER["REQUEST_URI"], strlen($https_uri));
+		$_SERVER['HTTPS'] = true;
+		$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 	}
 }
 
@@ -74,9 +80,8 @@ define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
 define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
 
-$localhost = array("localhost", "127.0.0.1", "0.0.0.0");
-$is_http = in_array(explode(':', $_SERVER['HTTP_HOST'])[0], $localhost);
-$scheme = $is_http ? "http://" : "https://";
+
+$scheme = isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] ? "https://" : "http://";
 
 define( 'WP_HOME',  $scheme . $_SERVER['HTTP_HOST'] );
 define( 'WP_SITEURL', $scheme . $_SERVER['HTTP_HOST'] . '/' );
