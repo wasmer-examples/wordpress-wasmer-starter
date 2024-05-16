@@ -1,0 +1,31 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_and_deploy:
+    name: Build and Deploy Wordpress to Wasmer Edge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Wasmer
+        uses: wasmerio/setup-wasmer@v2
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl
+      - name: Deploy app to Wasmer Edge
+        run: wasmer deploy --token=${{ secrets.WASMER_CIUSER_PROD_TOKEN }} --non-interactive --no-wait --no-persist-id
