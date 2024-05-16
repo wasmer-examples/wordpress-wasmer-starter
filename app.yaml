@@ -1,5 +1,7 @@
----
 kind: wasmer.io/App.v0
+name: wordpress
+owner: wasmer-examples
 package: .
 scaling:
   mode: single_concurrency
+app_id: da_n73IatAUQ0An
