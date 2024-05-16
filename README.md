@@ -1,4 +1,4 @@
-This is a [Wordpress](https://wordpress.org/).
+This is a [Wordpress](https://wordpress.org/) application project.
 
 ## Getting Started
 
