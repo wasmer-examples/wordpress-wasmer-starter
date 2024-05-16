@@ -1,39 +1,29 @@
-# WCGI WordPress Demo
-
-This demo contains a WordPress website that can be run as a WCGI program by
-Wasmer.
+This is a [Wordpress](https://wordpress.org/).
 
 ## Getting Started
 
-To run this demo, you will need to install [the Wasmer toolchain][install].
+You can run the development server:
 
-```console
-$ curl https://get.wasmer.io -sSfL | sh
+```bash
+php -S localhost:8080 -t app
 ```
 
-You can use `wasmer run-unstable` to run the website locally.
+You can also run the Wordpress example using Wasmer (check out the [install guide](https://docs.wasmer.io/install)):
 
-```console
-$ wasmer run . --net
-INFO run: wasmer_wasix::runners::wcgi::runner: Starting the server address=127.0.0.1:8000 command_name="php"
+```bash
+wasmer run . --net
 ```
 
-## License
+Open [http://127.0.0.1:8080](http://127.0.0.1:8080) with your browser to see your Wordpress app.
 
-This project is licensed under either of
+## Deploy on Wasmer Edge
 
-- Apache License, Version 2.0, ([LICENSE-APACHE](./LICENSE-APACHE.md) or
-  <http://www.apache.org/licenses/LICENSE-2.0>)
-- MIT license ([LICENSE-MIT](./LICENSE-MIT.md) or
-   <http://opensource.org/licenses/MIT>)
+The easiest way to deploy your Wordpress app is to use the [Wasmer Edge](https://wasmer.io/products/edge).
 
-at your option.
+Live example: https://wordpress-wasmer-examples.wasmer.app/
 
-### Contribution
+Deploy to Wasmer Edge:
 
-Unless you explicitly state otherwise, any contribution intentionally
-submitted for inclusion in the work by you, as defined in the Apache-2.0
-license, shall be dual licensed as above, without any additional terms or
-conditions.
-
-[install]: https://docs.wasmer.io/ecosystem/wasmer/getting-started
+```bash
+wasmer deploy
+```
