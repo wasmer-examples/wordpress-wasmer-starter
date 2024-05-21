@@ -22,24 +22,7 @@ define('WP_CACHE', true); // Added by W3 Total Cache
  * @package WordPress
  */
 
-$http_uri = "http://" . $_SERVER["HTTP_HOST"];
-if (str_starts_with($_SERVER["REQUEST_URI"], $http_uri)) {
-	if (str_contains($_SERVER["REQUEST_URI"], '.wasmer.app')) {
-		$_SERVER['HTTPS'] = true;
-		$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
-	}
-	$_SERVER["REQUEST_URI"] = substr($_SERVER["REQUEST_URI"], strlen($http_uri));
-}
-else {
-	$https_uri = "https://" . $_SERVER["HTTP_HOST"];
-	if (str_starts_with($_SERVER["REQUEST_URI"], $https_uri)) {
-		$_SERVER["REQUEST_URI"] = substr($_SERVER["REQUEST_URI"], strlen($https_uri));
-		$_SERVER['HTTPS'] = true;
-		$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
-	}
-}
-
-// ** Database settings - You can get this info from your web host ** //
+ // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'database_name_here' );
 
@@ -81,7 +64,7 @@ define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
 
 
-$scheme = isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] ? "https://" : "http://";
+$scheme = isset( $_SERVER['HTTPS'] ) && '1' === (string) $_SERVER['HTTPS'] ? "https://" : "http://";
 
 define( 'WP_HOME',  $scheme . $_SERVER['HTTP_HOST'] );
 define( 'WP_SITEURL', $scheme . $_SERVER['HTTP_HOST'] . '/' );
