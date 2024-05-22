@@ -1,5 +1,5 @@
 [dependencies]
-"arshia001/php" = "=8.3.4-pre.8"
+"arshia001/php" = "=8.3.4-pre.11"
 
 [fs]
 "/app" = "app"
