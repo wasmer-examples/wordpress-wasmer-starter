@@ -139,7 +139,7 @@ class Requests {
 	 * @var array
 	 */
 	const DEFAULT_TRANSPORTS = [
-		Curl::class      => Curl::class,
+		// Curl::class      => Curl::class,
 		Fsockopen::class => Fsockopen::class,
 	];
 
