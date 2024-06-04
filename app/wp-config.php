@@ -2,6 +2,7 @@
 /** Enable W3 Total Cache */
 define('WP_CACHE', true); // Added by W3 Total Cache
 
+define( 'WP_AUTO_UPDATE_CORE', false); // Disable automatic aupdates and checks
 
 /**
  * The base configuration for WordPress
