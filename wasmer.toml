@@ -1,14 +1,19 @@
+[package]
+name = "wasmer-tests/wordpress-starter"
+version = "0.0.9"
+
 [dependencies]
 "php/php" = "=8.3.4"
 
 [fs]
 "/app" = "app"
 "/db" = "db"
+"/config" = "./config"
 
 [[command]]
 name = "run"
 module = "php/php:php"
 runner = "wasi"
-
 [command.annotations.wasi]
+env = ["PHPRC=/config/php.ini"]
 main-args = ["-t", "/app", "-S", "localhost:8080"]

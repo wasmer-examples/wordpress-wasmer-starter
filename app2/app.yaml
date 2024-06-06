@@ -1,0 +1,28 @@
+kind: wasmer.io/App.v0
+name: wordpress-starter-instaboot
+owner: wasmer-tests
+package: ../
+scaling:
+  mode: single_concurrency
+domains:
+  - wordpress-starter-test-instaboot.wasmer.app
+capabilities:
+  instaboot:
+    # max_age: 10m
+    requests:
+      - path: /
+        headers:
+        - name: Host
+          value: wordpress-starter-test-instaboot.wasmer.app
+      - path: /
+        headers:
+        - name: Host
+          value: wordpress-starter-test-instaboot.wasmer.app
+      - path: /
+        headers:
+        - name: Host
+          value: wordpress-starter-test-instaboot.wasmer.app
+      - path: /phpinfo-cached
+        headers:
+        - name: Host
+          value: wordpress-starter-test-instaboot.wasmer.app
