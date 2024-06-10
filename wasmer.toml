@@ -12,3 +12,4 @@ runner = "wasi"
 
 [command.annotations.wasi]
 main-args = ["-t", "/app", "-S", "localhost:8080"]
+env = ["PHPRC=/config/php.ini"]
