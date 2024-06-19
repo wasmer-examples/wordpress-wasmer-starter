@@ -2,7 +2,10 @@
 /** Enable W3 Total Cache */
 define('WP_CACHE', true); // Added by W3 Total Cache
 
-define( 'WP_AUTO_UPDATE_CORE', false); // Disable automatic aupdates and checks
+// Disable Wordpress auto-update checks.
+// These can cause significant delays, especially with Wasmer Edge InstaBoot.
+define('WP_AUTO_UPDATE_CORE', false);
+define('AUTOMATIC_UPDATER_DISABLED', true);
 
 /**
  * The base configuration for WordPress
