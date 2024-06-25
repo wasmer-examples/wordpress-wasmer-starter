@@ -1,13 +1,12 @@
 [dependencies]
-"php/php" = "=8.3.4"
+"arshia001/php" = "=8.3.4-pre.14"
 
 [fs]
 "/app" = "app"
-"/db" = "db"
 
 [[command]]
 name = "run"
-module = "php/php:php"
+module = "arshia001/php:php"
 runner = "wasi"
 
 [command.annotations.wasi]

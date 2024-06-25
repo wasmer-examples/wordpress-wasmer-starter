@@ -2,7 +2,9 @@
 /** Enable W3 Total Cache */
 define('WP_CACHE', true); // Added by W3 Total Cache
 
-define( 'WP_AUTO_UPDATE_CORE', false); // Disable automatic aupdates and checks
+
+
+// define( 'WP_AUTO_UPDATE_CORE', false); // Disable automatic aupdates and checks
 
 /**
  * The base configuration for WordPress
@@ -25,24 +27,32 @@ define( 'WP_AUTO_UPDATE_CORE', false); // Disable automatic aupdates and checks
 
  // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'database_name_here' );
+define( 'DB_NAME', 'test' );
 
 /** Database username */
-define( 'DB_USER', 'username_here' );
+define( 'DB_USER', '2JnbsKV6HBTsrAy.root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'password_here' );
+define( 'DB_PASSWORD', '3xOjwl4FSHHq8pvk' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'p:gateway01.eu-central-1.prod.aws.tidbcloud.com:4000' );
+
+/** Database port */
+// define( 'DB_PORT', 4000 );
+
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define( 'DB_COLLATE', 'utf8mb4_general_ci' );
 
-define('DB_DIR', dirname(dirname(__FILE__)) . '/db/');
+// define('WP_ALLOW_REPAIR', true);
+
+
+// define('DB_DIR', dirname(dirname(__FILE__)) . '/db/');
 
 /**#@+
  * Authentication unique keys and salts.
