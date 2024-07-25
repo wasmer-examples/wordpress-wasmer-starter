@@ -27,16 +27,16 @@ define('WP_CACHE', true); // Added by W3 Total Cache
 
  // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'test' );
+define( 'DB_NAME', $_ENV['DB_NAME'] );
 
 /** Database username */
-define( 'DB_USER', '2JnbsKV6HBTsrAy.root' );
+define( 'DB_USER', $_ENV['DB_USER'] );
 
 /** Database password */
-define( 'DB_PASSWORD', '3xOjwl4FSHHq8pvk' );
+define( 'DB_PASSWORD', $_ENV['DB_PASS'] );
 
 /** Database hostname */
-define( 'DB_HOST', 'p:gateway01.eu-central-1.prod.aws.tidbcloud.com:4000' );
+define( 'DB_HOST', $_ENV['DB_HOST'] );
 
 /** Database port */
 // define( 'DB_PORT', 4000 );
