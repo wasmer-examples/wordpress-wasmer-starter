@@ -11,7 +11,7 @@ php -S localhost:8080 -t app
 You can also run the Wordpress example using Wasmer (check out the [install guide](https://docs.wasmer.io/install)):
 
 ```bash
-wasmer run . --net
+wasmer run .
 ```
 
 Open [http://127.0.0.1:8080](http://127.0.0.1:8080) with your browser to see your Wordpress app.
