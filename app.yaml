@@ -2,9 +2,14 @@ kind: wasmer.io/App.v0
 name: wordpress
 owner: wasmer-examples
 package: .
+volumes:
+  - name: wp-content
+    mount: /app/wp-content
 scaling:
   mode: single_concurrency
 capabilities:
+  database:
+    engine: mysql
   instaboot:
     max_age: 59m
     requests:
