@@ -1,5 +1,10 @@
+[package]
+entrypoint = "run"
+
 [dependencies]
-"php/php" = "=8.3.401"
+"php/php-eh" = "=8.3.404-beta.4"
+"wasmer/bash" = "*"
+"wasmer/static-web-server" = "*"
 
 [fs]
 "/app" = "app"
@@ -7,10 +12,57 @@
 "/config" = "config"
 
 [[command]]
-name = "run"
-module = "php/php:php"
+name = "serve-static"
+module = "wasmer/static-web-server:webserver"
 runner = "wasi"
-
 [command.annotations.wasi]
-main-args = ["-t", "/app", "-S", "localhost:8080"]
-env = ["PHPRC=/config/"]
+main-args = [
+  "--root", "/app"
+]
+
+
+[[command]]
+name = "run"
+module = "php/php-eh:php"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = [
+    "-t",
+    "/app",
+    "-S",
+    "localhost:8080",
+    "-d",
+    "memory_limit=256M",
+    "-d",
+    "max_execution_time=600",
+    "-d",
+    "max_input_time=600",
+    "-d",
+    "max_input_vars=4096",
+    "-d",
+    "upload_max_filesize=1024M",
+    "-d",
+    "post_max_size=1024M",
+]
+
+[[command]]
+name = "install-wp"
+module = "wasmer/bash:bash"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = ["/app/install/install.sh"]
+
+[[command]]
+name = "wp-cron"
+module = "php/php-eh:php"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = [
+    "/app/wp-cli.phar",
+    "cron",
+    "event",
+    "run",
+    "--due-now",
+    "--allow-root",
+    "--path=/app",
+]
